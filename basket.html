@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="C:\Users\kache\Desktop\webdev-exam-2024-1-Polikarpov\css\style_basket.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <script src="C:\Users\kache\Desktop\webdev-exam-2024-1-Polikarpov\js\basket.js" defer></script>
+
+    <div class="container">
+        <header>
+            <img src="C:\Users\kache\Desktop\webdev-exam-2024-1-Polikarpov\img\header_main\logo_main.jpg" alt="logo_main">
+            <nav>
+                <a href="C:\Users\kache\Desktop\webdev-exam-2024-1-Polikarpov\index.html" class="icon-link">
+                    <i class="fas fa-list"></i>
+                </a>
+                <a href="C:\Users\kache\Desktop\webdev-exam-2024-1-Polikarpov\lk.html" class="icon-link">
+                    <i class="fas fa-user"></i>
+                </a>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="cart-items" id="cartItems"></div>
+            <div class="order-form">
+                <h2>Оформление заказа</h2>
+                <form>
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Телефон:</label>
+                    <input type="text" id="phone" name="phone" required>
+
+                    <label for="newsletter">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        Согласие на получение рассылки
+                    </label>
+
+                    <label for="address">Адрес доставки:</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="delivery-date">Дата доставки:</label>
+                    <input type="date" id="delivery-date" name="delivery-date" required>
+
+                    <label for="delivery-time">Временной интервал доставки:</label>
+                    <select id="delivery-time" name="delivery-time" required>
+                        <option value="morning">Утро (9:00 - 12:00)</option>
+                        <option value="afternoon">День (12:00 - 15:00)</option>
+                        <option value="evening">Вечер (15:00 - 18:00)</option>
+                    </select>
+
+                    <label for="comments">Комментарий к заказу:</label>
+                    <textarea id="comments" name="comments"></textarea>
+
+                    <div class="order-summary">
+                        <h3>Итого:</h3>
+                        <p id="totalPrice">0</p>
+                        <p>Стоимость доставки: \$5</p>
+                        <p id="totalWithDelivery">\$5</p>
+                    </div>
+
+                    <button type="submit">Оформить заказ</button>
+                    <button type="reset">Сбросить</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>©2025 bobr kurwa<a href="">+79104569823</a></p>
+        </footer>
+    </div>
+
+    <div id="notificationArea" class="notification-area">
+        <div id="notifications" class="notifications"></div>
+    </div>
+</body>
+</html>
