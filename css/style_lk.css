@@ -1,0 +1,167 @@
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* header style */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+header img {
+    width: 150px;
+    height: auto;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav .icon-link {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+}
+
+header nav .icon-link:hover {
+    color: #007bff;
+}
+
+/* Медиа-запросы для адаптивного дизайна */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header img {
+        width: 100px;
+    }
+
+    header nav {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    header nav .icon-link {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header img {
+        width: 80px;
+    }
+
+    header nav {
+        justify-content: space-around;
+    }
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}
+
+footer a {
+    color: black;
+}
+
+footer a:hover {
+    color: #007bff;
+}
+
+/* orders section */
+.orders {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.orders h2 {
+    margin-bottom: 20px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    flex: 1;
+    width: 100%;
+}
+
+.orders table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.orders table, .orders th, .orders td {
+    border: 1px solid #ddd;
+}
+
+.orders th, .orders td {
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.orders th {
+    background-color: #f8f8f8;
+}
+
+.orders .icon-link {
+    margin: 0 5px;
+    color: #333;
+}
+
+.orders .icon-link:hover {
+    color: #007bff;
+}
+
+/* Адаптивные стили для main */
+@media (max-width: 768px) {
+    .orders table, .orders th, .orders td {
+        font-size: 14px;
+    }
+
+    .orders th, .orders td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .orders table, .orders th, .orders td {
+        font-size: 12px;
+    }
+
+    .orders th, .orders td {
+        padding: 6px;
+    }
+
+    .orders .icon-link {
+        font-size: 18px;
+    }
+}

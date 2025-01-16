@@ -1,0 +1,616 @@
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+    
+    .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    }
+    
+    /* header style */
+    header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    }
+    
+    header img {
+    width: 150px; /* Ширина логотипа /
+    height: auto; / Автоматическая высота для сохранения пропорций */
+    }
+    
+    header form {
+    display: flex;
+    align-items: center;
+    }
+    
+    header form input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 200px; /* Ширина поисковой строки */
+    }
+    
+    header form button {
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    
+    header form button:hover {
+    background-color: #0056b3;
+    }
+    
+    header nav {
+    display: flex;
+    align-items: center;
+    }
+    
+    header nav .icon-link {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 24px; /* Размер иконок */
+    }
+    
+    header nav .icon-link:hover {
+    color: #007bff;
+    }
+    
+    /* Медиа-запросы для адаптивного дизайна */
+    @media (max-width: 768px) {
+    header {
+    flex-direction: column;
+    align-items: flex-start;
+    }
+    
+    
+    header img {
+        width: 100px; /* Уменьшение ширины логотипа */
+    }
+    
+    header form {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    header form input[type="text"] {
+        width: calc(100% - 120px); /* Ширина поисковой строки */
+    }
+    
+    header nav {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    
+    header nav .icon-link {
+        margin-left: 0;
+    }
+    }
+    
+    @media (max-width: 480px) {
+    header {
+    padding: 10px;
+    }
+    
+    
+    header img {
+        width: 80px; /* Уменьшение ширины логотипа */
+    }
+    
+    header form input[type="text"] {
+        width: calc(100% - 100px); /* Ширина поисковой строки */
+    }
+    
+    header nav {
+        justify-content: space-around;
+    }
+    }
+    
+    /* sidebar style */
+    
+    .sidebar {
+    width: 250px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Добавляет прокрутку, если контент превышает высоту экрана */
+    }
+    
+    .filter-section {
+    margin-bottom: 20px;
+    }
+    
+    .filter-section h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #555;
+    }
+    
+    .filter-section label {
+    display: block;
+    margin-top: 10px;
+    }
+    
+    .filter-section input[type="checkbox"] {
+    margin-right: 10px;
+    }
+    
+    .filter-section input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+    
+    .apply-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    }
+    
+    .apply-button:hover {
+    background-color: #0056b3;
+    }
+    
+    .content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+    }
+    
+    .main-content {
+    display: flex;
+    flex-grow: 1;
+    }
+    
+    .catalog {
+    margin-top: 20px;
+    }
+    
+    .catalog h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+    
+    .catalog select {
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+    
+    .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    }
+    
+    .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #f8f8f8;
+    }
+    
+    .product-card img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    }
+    
+    .product-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    }
+    
+    .product-card .rating {
+    font-size: 14px;
+    margin-bottom: 10px;
+    }
+    
+    .product-card .price {
+    font-size: 18px;
+    margin-bottom: 10px;
+    }
+    
+    .product-card .price .original-price {
+    color: red;
+    text-decoration: line-through;
+    }
+    
+    .product-card .price .discount {
+    color: green;
+    font-weight: bold;
+    }
+    
+    .product-card button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    
+    .product-card button:hover {
+    background-color: #0056b3;
+    }
+    
+    .load-more-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    }
+    
+    .load-more-button:hover {
+    background-color: #0056b3;
+    }
+    
+    @media (max-width: 768px) {
+    .main-content {
+    flex-direction: column;
+    }
+    
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .content {
+        padding: 10px;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .product-card h3 {
+        font-size: 16px;
+    }
+    
+    .product-card .rating {
+        font-size: 12px;
+    }
+    
+    .product-card .price {
+        font-size: 16px;
+    }
+    
+    .product-card button {
+        padding: 8px;
+        font-size: 14px;
+    }
+    }
+    
+    @media (max-width: 480px) {
+    .sidebar {
+    padding: 10px;
+    }
+    
+    
+    .filter-section h3 {
+        font-size: 16px;
+    }
+    
+    .filter-section label {
+        font-size: 14px;
+    }
+    
+    .apply-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    .product-card h3 {
+        font-size: 14px;
+    }
+    
+    .product-card .rating {
+        font-size: 10px;
+    }
+    
+    .product-card .price {
+        font-size: 14px;
+    }
+    
+    .product-card button {
+        padding: 6px;
+        font-size: 12px;
+    }
+    }
+    
+    /* footer style */
+    footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    }
+
+    footer a{
+        color: black;
+    }
+
+    footer a:hover{
+        color: #007bff;
+    }
+    
+    /* main style /
+    / Notification Area Styles */
+    /* Notification Area Styles */
+.notification-area {
+    position: fixed;
+    top: 20px; /* Adjust this value based on the height of your header */
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    z-index: 1000;
+}
+
+.notification-area.show {
+    display: block;
+}
+
+.notifications {
+    padding: 10px;
+}
+
+.notification {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.notification:last-child {
+    border-bottom: none;
+}
+
+.notification .close-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.notification .close-button:hover {
+    color: red;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .notification-area {
+        width: 250px;
+        max-height: 300px;
+    }
+
+    .notification {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .notification .close-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notification-area {
+        width: 200px;
+        max-height: 200px;
+    }
+
+    .notification {
+        padding: 6px;
+        font-size: 10px;
+    }
+
+    .notification .close-button {
+        font-size: 12px;
+    }
+}
+    
+    /* Product Grid and Card Styles */
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        background-color: #f8f8f8;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto; /* Уберите фиксированную высоту */
+        overflow: hidden; /* Скрыть переполнение */
+    }
+    
+    .product-card img {
+        width: 100%;
+        height: auto; /* Автоматическая высота для сохранения пропорций */
+        object-fit: contain; /* Убедитесь, что изображение помещается в контейнер */
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+    
+    .product-card .content-wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .product-card h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Количество строк для отображения */
+        -webkit-box-orient: vertical;
+        word-wrap: break-word; /* Перенос длинных слов */
+        white-space: normal; /* Разрешить перенос текста */
+    }
+    
+    .product-card .rating {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .product-card .price {
+        font-size: 16px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap; /* Перенос элементов на новую строку */
+    }
+    
+    .product-card .price .original-price {
+        color: red;
+        text-decoration: line-through;
+        margin-right: 5px;
+    }
+    
+    .product-card .price .discount {
+        color: green;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+    
+    .product-card .price .discount-percent {
+        color: green;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+    
+    .product-card button {
+        padding: 10px;
+        font-size: 14px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: auto; /* Прижимаем кнопку к низу */
+    }
+    
+    .product-card button:hover {
+        background-color: #0056b3;
+    }
+    
+    .load-more-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    
+    .load-more-button:hover {
+        background-color: #0056b3;
+    }
+    
+    .stars{
+        color: rgb(136, 136, 1);
+    }
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .product-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+    
+        .product-card h3 {
+            font-size: 14px;
+        }
+    
+        .product-card .rating {
+            font-size: 12px;
+        }
+    
+        .product-card .price {
+            font-size: 14px;
+        }
+    
+        .product-card button {
+            padding: 8px;
+            font-size: 12px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .product-grid {
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
+    
+        .product-card h3 {
+            font-size: 12px;
+        }
+    
+        .product-card .rating {
+            font-size: 10px;
+        }
+    
+        .product-card .price {
+            font-size: 12px;
+        }
+    
+        .product-card button {
+            padding: 6px;
+            font-size: 10px;
+        }
+    }
+    
