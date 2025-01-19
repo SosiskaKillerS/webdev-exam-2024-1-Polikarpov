@@ -80,24 +80,57 @@ document.addEventListener('DOMContentLoaded', function() {
         displayCartItems();
     }
 
-    function showNotification(message) {
+    function showNotification(message, type = 'success', redirectUrl = null) {
+        const notificationArea = document.getElementById('notificationArea');
         const notifications = document.getElementById('notifications');
         const notification = document.createElement('div');
-        notification.classList.add('notification');
+        notification.classList.add('notification', type);
         notification.textContent = message;
+
+        if (redirectUrl) {
+            const redirectButton = document.createElement('button');
+            redirectButton.textContent = 'Перейти на главную страницу';
+            redirectButton.addEventListener('click', () => {
+                window.location.href = redirectUrl;
+            });
+            notification.appendChild(redirectButton);
+        }
+
         notifications.appendChild(notification);
+
+        notificationArea.classList.add('show');
 
         setTimeout(() => {
             notifications.removeChild(notification);
-        }, 3000);
+            if (notifications.children.length === 0) {
+                notificationArea.classList.remove('show');
+            }
+        }, 5000);
+    }
+
+    function clearCart() {
+        console.log('Clearing cart...');
+        cart = [];
+        localStorage.removeItem('cart');
+        displayCartItems();
+    }
+
+    function clearForm(form) {
+        console.log('Clearing form...');
+        form.reset();
     }
 
     function handleOrderSubmit(event) {
         event.preventDefault();
 
+        if (cart.length === 0) {
+            showNotification('Корзина пуста. Заказ нельзя оформить.', 'error');
+            return;
+        }
+
         const form = event.target;
         const formData = new FormData(form);
-        
+
         const orderData = {
             full_name: formData.get('name'),
             email: formData.get('email'),
@@ -109,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
             comment: formData.get('comments'),
             good_ids: cart.map(product => product.id)
         };
-        console.log(orderData)
 
         // Преобразование даты в формат "dd.mm.yyyy"
         const dateParts = orderData.delivery_date.split('-');
@@ -124,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         orderData.delivery_interval = timeMapping[orderData.delivery_interval];
 
-        // Сначала создаем заказ
+        // Создаем заказ
         fetch('https://edu.std-900.ist.mospolytech.ru/exam-2024-1/api/orders?api_key=f8533eb0-259f-4ff3-92a5-0a88c32498d2', {
             method: 'POST',
             headers: {
@@ -132,40 +164,22 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(orderData)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error();
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log('Response data:', data); // Логирование ответа
             if (data.success) {
-                const orderId = data.order_id; // Предполагается, что сервер возвращает order_id
-
-                // Теперь выполняем GET-запрос для получения данных заказа
-                fetch(`https://edu.std-900.ist.mospolytech.ru/exam-2024-1/api/orders/${orderId}?api_key=f8533eb0-259f-4ff3-92a5-0a88c32498d2`)
-                    .then(response => response.json())
-                    .then(orderData => {
-                        if (orderData.success) {
-                            showNotification('Заказ оформлен успешно!');
-                            localStorage.removeItem('cart');
-                            cart = [];
-                            displayCartItems();
-                            form.reset();
-                            // Перенаправление на главную страницу
-                            setTimeout(() => {
-                                window.location.href = 'C:/Users/kache/Desktop/webdev-exam-2024-Polikarpov-231-329/main.html';
-                            }, 3000); // Задержка в 3 секунды перед перенаправлением
-                        } else {
-                            showNotification('Ошибка при получении данных заказа. Пожалуйста, попробуйте снова.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        showNotification('Ошибка при получении данных заказа. Пожалуйста, попробуйте снова.');
-                    });
-            } else {
-                showNotification('Ошибка при создании заказа. Пожалуйста, попробуйте снова.');
+                showNotification('Заказ оформлен успешно!', 'success', 'page2.html');
+                clearCart();
+                clearForm(form);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            showNotification('Ошибка при создании заказа. Пожалуйста, попробуйте снова.');
         });
     }
 

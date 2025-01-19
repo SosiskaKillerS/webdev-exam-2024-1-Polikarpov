@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Корзина</title>
-    <link rel="stylesheet" href="css\page1.css">
+    <link rel="stylesheet" href="css/page1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <script src="js\script1.js" defer></script>
+    <script src="js/script1.js" defer></script>
 
     <div class="container">
         <header>
-            <img src="img\header_main\logo_main.jpg" alt="logo_main">
+            <img src="img/header_main/logo_main.jpg" alt="logo_main">
             <nav>
                 <a href="index.html" class="icon-link">
                     <i class="fas fa-list"></i>
@@ -50,9 +50,10 @@
 
                     <label for="delivery-time">Временной интервал доставки:</label>
                     <select id="delivery-time" name="delivery-time" required>
-                        <option value="morning">Утро (9:00 - 12:00)</option>
-                        <option value="afternoon">День (12:00 - 15:00)</option>
-                        <option value="evening">Вечер (15:00 - 18:00)</option>
+                        <option value="morning">Утро (8:00 - 12:00)</option>
+                        <option value="afternoon">День (12:00 - 14:00)</option>
+                        <option value="evening">Вечер (14:00 - 18:00)</option>
+                        <option value="night">Ночь (18:00-22:00)</option>
                     </select>
 
                     <label for="comments">Комментарий к заказу:</label>
@@ -61,8 +62,8 @@
                     <div class="order-summary">
                         <h3>Итого:</h3>
                         <p id="totalPrice">0</p>
-                        <p>Стоимость доставки: \$5</p>
-                        <p id="totalWithDelivery">\$5</p>
+                        <p>Стоимость доставки: $5</p>
+                        <p id="totalWithDelivery">$5</p>
                     </div>
 
                     <button type="submit">Оформить заказ</button>
